@@ -16,6 +16,7 @@
 		84A6A4F21BBDC09A0043397C /* UIViewCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6A4F11BBDC09A0043397C /* UIViewCalculatorTests.m */; };
 		84A6A4FD1BBDC1CE0043397C /* RationalNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6A4FC1BBDC1CE0043397C /* RationalNumbers.m */; };
 		84EA302F1BBEBC8900F225EA /* OFCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA302E1BBEBC8900F225EA /* OFCalculator.m */; };
+		84F2EE151BC53F0700CDB86E /* Space2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84F2EE141BC53F0700CDB86E /* Space2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,18 +35,19 @@
 		84A6A4D71BBDC09A0043397C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84A6A4D91BBDC09A0043397C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84A6A4DA1BBDC09A0043397C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84A6A4DC1BBDC09A0043397C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84A6A4DD1BBDC09A0043397C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84A6A4DC1BBDC09A0043397C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = UIViewCalculator/ViewController.h; sourceTree = SOURCE_ROOT; };
+		84A6A4DD1BBDC09A0043397C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = UIViewCalculator/ViewController.m; sourceTree = SOURCE_ROOT; };
 		84A6A4E01BBDC09A0043397C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84A6A4E21BBDC09A0043397C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84A6A4E21BBDC09A0043397C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		84A6A4E51BBDC09A0043397C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84A6A4EB1BBDC09A0043397C /* UIViewCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIViewCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A6A4F01BBDC09A0043397C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A6A4F11BBDC09A0043397C /* UIViewCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewCalculatorTests.m; sourceTree = "<group>"; };
-		84A6A4FB1BBDC1CE0043397C /* RationalNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RationalNumbers.h; sourceTree = "<group>"; };
-		84A6A4FC1BBDC1CE0043397C /* RationalNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RationalNumbers.m; sourceTree = "<group>"; };
-		84EA302D1BBEBC8900F225EA /* OFCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCalculator.h; sourceTree = "<group>"; };
-		84EA302E1BBEBC8900F225EA /* OFCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OFCalculator.m; sourceTree = "<group>"; };
+		84A6A4FB1BBDC1CE0043397C /* RationalNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RationalNumbers.h; path = ../../RationalNumbers.h; sourceTree = "<group>"; };
+		84A6A4FC1BBDC1CE0043397C /* RationalNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RationalNumbers.m; path = ../../RationalNumbers.m; sourceTree = "<group>"; };
+		84EA302D1BBEBC8900F225EA /* OFCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OFCalculator.h; path = ../../OFCalculator.h; sourceTree = "<group>"; };
+		84EA302E1BBEBC8900F225EA /* OFCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OFCalculator.m; path = ../../OFCalculator.m; sourceTree = "<group>"; };
+		84F2EE141BC53F0700CDB86E /* Space2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Space2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,17 +89,11 @@
 		84A6A4D41BBDC09A0043397C /* UIViewCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				84A6A4FB1BBDC1CE0043397C /* RationalNumbers.h */,
-				84A6A4FC1BBDC1CE0043397C /* RationalNumbers.m */,
-				84EA302D1BBEBC8900F225EA /* OFCalculator.h */,
-				84EA302E1BBEBC8900F225EA /* OFCalculator.m */,
+				84F2EE131BC53DEB00CDB86E /* Controller */,
+				84F2EE121BC53DD500CDB86E /* View */,
+				84F2EE0F1BC53DBD00CDB86E /* Model */,
 				84A6A4D91BBDC09A0043397C /* AppDelegate.h */,
 				84A6A4DA1BBDC09A0043397C /* AppDelegate.m */,
-				84A6A4DC1BBDC09A0043397C /* ViewController.h */,
-				84A6A4DD1BBDC09A0043397C /* ViewController.m */,
-				84A6A4DF1BBDC09A0043397C /* Main.storyboard */,
-				84A6A4E21BBDC09A0043397C /* Images.xcassets */,
-				84A6A4E41BBDC09A0043397C /* LaunchScreen.xib */,
 				84A6A4D51BBDC09A0043397C /* Supporting Files */,
 			);
 			path = UIViewCalculator;
@@ -127,6 +123,53 @@
 				84A6A4F01BBDC09A0043397C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84F2EE0F1BC53DBD00CDB86E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84F2EE101BC53DBD00CDB86E /* CalculatorOperations */,
+				84F2EE111BC53DBD00CDB86E /* RationalNumbers */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84F2EE101BC53DBD00CDB86E /* CalculatorOperations */ = {
+			isa = PBXGroup;
+			children = (
+				84EA302D1BBEBC8900F225EA /* OFCalculator.h */,
+				84EA302E1BBEBC8900F225EA /* OFCalculator.m */,
+			);
+			path = CalculatorOperations;
+			sourceTree = "<group>";
+		};
+		84F2EE111BC53DBD00CDB86E /* RationalNumbers */ = {
+			isa = PBXGroup;
+			children = (
+				84A6A4FB1BBDC1CE0043397C /* RationalNumbers.h */,
+				84A6A4FC1BBDC1CE0043397C /* RationalNumbers.m */,
+			);
+			path = RationalNumbers;
+			sourceTree = "<group>";
+		};
+		84F2EE121BC53DD500CDB86E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84F2EE141BC53F0700CDB86E /* Space2.jpg */,
+				84A6A4E41BBDC09A0043397C /* LaunchScreen.xib */,
+				84A6A4DF1BBDC09A0043397C /* Main.storyboard */,
+				84A6A4E21BBDC09A0043397C /* Images.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84F2EE131BC53DEB00CDB86E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84A6A4DC1BBDC09A0043397C /* ViewController.h */,
+				84A6A4DD1BBDC09A0043397C /* ViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +255,7 @@
 				84A6A4E11BBDC09A0043397C /* Main.storyboard in Resources */,
 				84A6A4E61BBDC09A0043397C /* LaunchScreen.xib in Resources */,
 				84A6A4E31BBDC09A0043397C /* Images.xcassets in Resources */,
+				84F2EE151BC53F0700CDB86E /* Space2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +306,7 @@
 				84A6A4E01BBDC09A0043397C /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		84A6A4E41BBDC09A0043397C /* LaunchScreen.xib */ = {
@@ -270,6 +315,7 @@
 				84A6A4E51BBDC09A0043397C /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

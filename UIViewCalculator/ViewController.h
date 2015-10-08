@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView * calculatorBaseView;
 @property (weak, nonatomic) IBOutlet UILabel *calculatorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *enterAreaLabel;
 
@@ -23,16 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *divideButton;
 @property (weak, nonatomic) IBOutlet UIButton *equalsButton;
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;
-
-- (IBAction) enterDigitAction: (UIButton*)sender;
-- (IBAction) addSlashAction: (UIButton*)sender;
-- (IBAction) equalsAction: (UIButton*)sender;
-- (IBAction) plusAction: (UIButton*)sender;
-- (IBAction) subtractAction: (UIButton*)sender;
-- (IBAction) multiplyAction: (UIButton*)sender;
-- (IBAction) divideAction: (UIButton*)sender;
-
-- (IBAction) clearAllAction: (UIButton*)sender;
 
 @end
 

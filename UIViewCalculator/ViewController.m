@@ -20,6 +20,17 @@
 @property (assign, nonatomic) NSInteger operationType;
 @property (assign, nonatomic) BOOL didFinishEnteringNumerator;
 @property (assign, nonatomic) BOOL didFinishEnteringFirstNumber;
+
+- (IBAction) enterDigitAction: (UIButton*)sender;
+- (IBAction) addSlashAction: (UIButton*)sender;
+- (IBAction) equalsAction: (UIButton*)sender;
+- (IBAction) plusAction: (UIButton*)sender;
+- (IBAction) subtractAction: (UIButton*)sender;
+- (IBAction) multiplyAction: (UIButton*)sender;
+- (IBAction) divideAction: (UIButton*)sender;
+
+- (IBAction) clearAllAction: (UIButton*)sender;
+
 @end
 
 enum typeOfOperation
@@ -36,7 +47,17 @@ enum typeOfOperation
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    //self.enterAreaLabel
+   
+    UIGraphicsBeginImageContext(self.calculatorBaseView.frame.size);
+    [[UIImage imageNamed:@"Space2.jpg"] drawInRect:self.calculatorBaseView.bounds];
+    UIImage * baseImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.calculatorBaseView.backgroundColor = [UIColor colorWithPatternImage:baseImage];
+    
+    self.calculatorBaseView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    
+    self.enterAreaLabel.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.enterAreaLabel.text=@"";
     
     self.myCalculator = [OFCalculator createCalculator];
     self.resultNumber = [[RationalNumbers alloc]init];
@@ -45,8 +66,6 @@ enum typeOfOperation
     self.didFinishEnteringNumerator = NO;
     self.didFinishEnteringFirstNumber = NO;
     self.operationType = 0;
-    self.enterAreaLabel.text=@"";
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,6 +143,11 @@ enum typeOfOperation
     }
     
     [self finishFirstNumber];
+    if (self.resultNumber.denominator == 1)
+    {
+        self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:[NSString stringWithFormat:@"= %ld", self.resultNumber.numerator]];
+    }
+    else
     self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:[NSString stringWithFormat:@"= %ld/%ld", self.resultNumber.numerator, self.resultNumber.denominator]];
 }
 
