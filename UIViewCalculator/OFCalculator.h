@@ -11,6 +11,9 @@
 
 @interface OFCalculator : NSObject
 
+@property (strong, nonatomic) NSMutableArray * rationalNumbersArray;
+@property (strong, nonatomic) NSMutableArray * mathematicOperationsArray;
+
 +(id)createCalculator;
 
 - (id) add: (RationalNumbers*) rationNum1 and: (RationalNumbers*) rationNum2;

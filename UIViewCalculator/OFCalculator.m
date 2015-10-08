@@ -11,12 +11,18 @@
 
 @implementation OFCalculator
 
+@synthesize rationalNumbersArray=_rationalNumbersArray;
+@synthesize mathematicOperationsArray=_mathematicOperationsArray;
+
 +(id)createCalculator
 {
     static OFCalculator * myCalculator=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
         myCalculator = [[OFCalculator alloc]init];
+        myCalculator.rationalNumbersArray = [[NSMutableArray alloc]init];
+        //[myCalculator.rationalNumbersArray addObject:[[RationalNumbers alloc]init]];
+        myCalculator.mathematicOperationsArray = [[NSMutableArray alloc]init];
     });
     return myCalculator;
 }
