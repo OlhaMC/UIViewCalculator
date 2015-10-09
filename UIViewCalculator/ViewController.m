@@ -62,7 +62,6 @@
 - (void) defineNumeratorOrDenominator
 {
     RationalNumbers * temporaryFraction = [[RationalNumbers alloc]init];
-
     if (self.didFinishEnteringNumerator)
     {
         if (self.temporaryNumber == 0)
@@ -77,10 +76,13 @@
             temporaryFraction.denominator = self.temporaryNumber;
             [self.myCalculator.rationalNumbersArray removeLastObject];
         }
-        
     }
     else
     {
+        if (self.temporaryNumber == 0)
+        {
+            return;
+        }
         temporaryFraction.numerator = self.temporaryNumber;
         temporaryFraction.denominator = 1;
     }
@@ -94,6 +96,13 @@
 {
     [self.myCalculator.rationalNumbersArray removeObjectAtIndex:indexI+1];
     [self.myCalculator.mathematicOperationsArray removeObjectAtIndex:indexI];
+}
+
+- (void) finishNumberForOperationButton: (UIButton*) sender
+{
+    [self.myCalculator.mathematicOperationsArray addObject:@(sender.tag)];
+    self.didEnterOperation = YES;
+    [self defineNumeratorOrDenominator];
 }
 
 - (void) show
@@ -131,27 +140,31 @@
 -(IBAction)equalsAction:(UIButton*)sender
 {
     [self defineNumeratorOrDenominator];
+    if (self.myCalculator.rationalNumbersArray.count <= 1)
+    {
+        return;
+    }
     
-        for (NSUInteger i = 0; i < self.myCalculator.mathematicOperationsArray.count; i++)
+    for (NSUInteger i = 0; i < self.myCalculator.mathematicOperationsArray.count; i++)
+    {
+        switch ([self.myCalculator.mathematicOperationsArray[i] integerValue])
         {
-            switch ([self.myCalculator.mathematicOperationsArray[i] integerValue])
-            {
-                case 13:
-                    self.myCalculator.rationalNumbersArray[i]=
-                    [self.myCalculator multiply:self.myCalculator.rationalNumbersArray[i]
-                                            and:self.myCalculator.rationalNumbersArray[i+1]];
-                    [self removeObjectsAtIndexes:i];
-                    i-=1;
-                    break;
-                case 14:
-                    self.myCalculator.rationalNumbersArray[i]=
-                    [self.myCalculator divide:self.myCalculator.rationalNumbersArray[i]
-                                            and:self.myCalculator.rationalNumbersArray[i+1]];
-                    [self removeObjectsAtIndexes:i];
-                    i-=1;
-                    break;
-            }
+            case 13:
+                self.myCalculator.rationalNumbersArray[i]=
+                [self.myCalculator multiply:self.myCalculator.rationalNumbersArray[i]
+                                        and:self.myCalculator.rationalNumbersArray[i+1]];
+                [self removeObjectsAtIndexes:i];
+                i-=1;
+                break;
+            case 14:
+                self.myCalculator.rationalNumbersArray[i]=
+                [self.myCalculator divide:self.myCalculator.rationalNumbersArray[i]
+                                        and:self.myCalculator.rationalNumbersArray[i+1]];
+                [self removeObjectsAtIndexes:i];
+                i-=1;
+                break;
         }
+    }
 
     for ( ; self.myCalculator.rationalNumbersArray.count > 1; )
         {
@@ -182,14 +195,8 @@
     }
     else
     {
-        [self.myCalculator.mathematicOperationsArray addObject:@(sender.tag)];
+        [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@"+"];
-        self.didEnterOperation = YES;
-        /*if (self.temporaryNumber == 0)
-        {
-                       return;
-        }*/
-        [self defineNumeratorOrDenominator];
     }
 }
 
@@ -201,14 +208,8 @@
     }
     else
     {
-        [self.myCalculator.mathematicOperationsArray addObject:@(sender.tag)];
+        [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@"-"];
-        self.didEnterOperation = YES;
-        /*if (self.temporaryNumber == 0)
-        {
-            return;
-        }*/
-        [self defineNumeratorOrDenominator];
     }
 }
 
@@ -220,14 +221,8 @@
     }
     else
     {
-        [self.myCalculator.mathematicOperationsArray addObject:@(sender.tag)];
+        [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@"*"];
-        self.didEnterOperation = YES;
-        /*if (self.temporaryNumber == 0)
-        {
-            return;
-        }*/
-        [self defineNumeratorOrDenominator];
     }
 }
 - (IBAction) divideAction: (UIButton*)sender
@@ -238,14 +233,8 @@
     }
     else
     {
-        [self.myCalculator.mathematicOperationsArray addObject:@(sender.tag)];
+        [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@":"];
-        self.didEnterOperation = YES;
-        /*if (self.temporaryNumber == 0)
-        {
-            return;
-        }*/
-        [self defineNumeratorOrDenominator];
     }
 }
 -(IBAction)clearAllAction:(UIButton*)sender
@@ -256,6 +245,23 @@
     [self.myCalculator.rationalNumbersArray removeAllObjects];
     [self.myCalculator.mathematicOperationsArray removeAllObjects];
     self.enterAreaLabel.text=@"";
+}
+
+- (IBAction) chandeSignAction:(UIButton*)sender
+{
+    if (self.myCalculator.mathematicOperationsArray.count != 0)
+    {
+        return;
+    }
+    if (self.myCalculator.rationalNumbersArray.count > 1 )
+    {
+        return;
+    }
+    self.temporaryNumber = - (self.temporaryNumber);
+    if (self.temporaryNumber < 0)
+        self.enterAreaLabel.text=[NSString stringWithFormat:@"-%@",self.enterAreaLabel.text];
+    else
+        self.enterAreaLabel.text=[self.enterAreaLabel.text substringFromIndex:1];
 }
 
 @end

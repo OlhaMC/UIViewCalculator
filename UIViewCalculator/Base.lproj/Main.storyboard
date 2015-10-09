@@ -38,6 +38,18 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6CY-fL-xkD">
+                                        <rect key="frame" x="18" y="167" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                        <state key="normal" title="1">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="enterDigitAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUw-N2-jzE"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="He0-qO-5zt">
                                         <rect key="frame" x="73" y="167" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -227,17 +239,8 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="multiplyAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KHj-kM-2Nz"/>
+                                            <action selector="chandeSignAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vwh-yj-qtq"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GWg-Qt-qno">
-                                        <rect key="frame" x="73" y="317" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
-                                        <state key="normal" title="( )">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
                                     </button>
                                     <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FL1-kP-bKB">
                                         <rect key="frame" x="83" y="370" width="123" height="37"/>
@@ -251,17 +254,14 @@
                                             <action selector="clearAllAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gtr-64-SwG"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6CY-fL-xkD">
-                                        <rect key="frame" x="18" y="167" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GWg-Qt-qno">
+                                        <rect key="frame" x="73" y="317" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
-                                        <state key="normal" title="1">
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                                        <state key="normal" title="( )">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="enterDigitAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUw-N2-jzE"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -278,6 +278,7 @@
                         <outlet property="addSlashButton" destination="XZJ-ZP-Xad" id="gAC-XP-IqU"/>
                         <outlet property="calculatorBaseView" destination="Qpv-eh-ETF" id="LZx-16-LFI"/>
                         <outlet property="calculatorLabel" destination="2FC-Em-pcs" id="NdC-En-hVc"/>
+                        <outlet property="changeSignButton" destination="LjF-vD-fD6" id="rV1-11-WXe"/>
                         <outlet property="clearButton" destination="FL1-kP-bKB" id="oWj-5v-8fa"/>
                         <outlet property="divideButton" destination="5kf-nY-Tz3" id="K8u-Re-nLk"/>
                         <outlet property="enterAreaLabel" destination="0sR-ko-5Ud" id="29c-8k-Dy1"/>
