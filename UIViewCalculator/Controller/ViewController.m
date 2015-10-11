@@ -18,17 +18,6 @@
 @property (assign, nonatomic) BOOL didFinishEnteringNumerator;
 @property (assign, nonatomic) BOOL didEnterOperation;
 
-- (IBAction) enterDigitAction: (UIButton*)sender;
-- (IBAction) addSlashAction: (UIButton*)sender;
-- (IBAction) equalsAction: (UIButton*)sender;
-
-- (IBAction) plusAction: (UIButton*)sender;
-- (IBAction) subtractAction: (UIButton*)sender;
-- (IBAction) multiplyAction: (UIButton*)sender;
-- (IBAction) divideAction: (UIButton*)sender;
-
-- (IBAction) clearAllAction: (UIButton*)sender;
-
 @end
 
 @implementation ViewController
@@ -42,7 +31,6 @@
     UIImage * baseImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.calculatorBaseView.backgroundColor = [UIColor colorWithPatternImage:baseImage];
-    
     self.calculatorBaseView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     
     self.enterAreaLabel.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
@@ -79,12 +67,13 @@
     }
     else
     {
-        if (self.temporaryNumber == 0)
+        if (self.temporaryNumber != 0)
+            //in case user wants to use result as 1-st number in the next operations array
         {
-            return;
+            temporaryFraction.numerator = self.temporaryNumber;
+            temporaryFraction.denominator = 1;
         }
-        temporaryFraction.numerator = self.temporaryNumber;
-        temporaryFraction.denominator = 1;
+        else return;
     }
     
     [self.myCalculator.rationalNumbersArray addObject:[temporaryFraction copy]];
@@ -113,10 +102,10 @@
   }
   else
     self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:[NSString stringWithFormat:@"= %ld/%ld", [self.myCalculator.rationalNumbersArray[0] numerator],
-                                                                                [self.myCalculator.rationalNumbersArray[0] denominator]]];
+                                        [self.myCalculator.rationalNumbersArray[0] denominator]]];
 }
 
-#pragma mark - UICalculator methods
+#pragma mark - Input utility methods
 -(IBAction)enterDigitAction:(UIButton*)sender
 {
     self.temporaryNumber = self.temporaryNumber * 10 + sender.tag;
@@ -137,14 +126,26 @@
 
 }
 
+-(IBAction)clearAllAction:(UIButton*)sender
+{
+    self.temporaryNumber = 0;
+    self.didFinishEnteringNumerator = NO;
+    
+    [self.myCalculator.rationalNumbersArray removeAllObjects];
+    [self.myCalculator.mathematicOperationsArray removeAllObjects];
+    self.enterAreaLabel.text=@"";
+}
+
+#pragma mark - Mathematic operations methods
 -(IBAction)equalsAction:(UIButton*)sender
 {
-    [self defineNumeratorOrDenominator];
-    if (self.myCalculator.rationalNumbersArray.count <= 1)
-    {
-        return;
-    }
-    
+  if (self.myCalculator.mathematicOperationsArray.count >= 1)
+  {
+    [self defineNumeratorOrDenominator]; //check,save and add to array last number
+  }
+  if (self.myCalculator.mathematicOperationsArray.count >= 1)
+    //if denomintor of last number=0, at this poin all arrays will =0 and method will not be performed
+  {
     for (NSUInteger i = 0; i < self.myCalculator.mathematicOperationsArray.count; i++)
     {
         switch ([self.myCalculator.mathematicOperationsArray[i] integerValue])
@@ -185,15 +186,12 @@
             }
         }
     [self show];
+  }
 }
 
 -(IBAction)plusAction:(UIButton*)sender
 {
-    if (self.didEnterOperation)
-    {
-        return;
-    }
-    else
+    if (!self.didEnterOperation)
     {
         [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@"+"];
@@ -202,11 +200,7 @@
 
 - (IBAction) subtractAction: (UIButton*)sender
 {
-    if (self.didEnterOperation)
-    {
-        return;
-    }
-    else
+    if (!self.didEnterOperation)
     {
         [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@"-"];
@@ -215,11 +209,7 @@
 
 - (IBAction) multiplyAction: (UIButton*)sender
 {
-    if (self.didEnterOperation)
-    {
-        return;
-    }
-    else
+    if (!self.didEnterOperation)
     {
         [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@"*"];
@@ -227,41 +217,27 @@
 }
 - (IBAction) divideAction: (UIButton*)sender
 {
-    if (self.didEnterOperation)
-    {
-        return;
-    }
-    else
+    if (!self.didEnterOperation)
     {
         [self finishNumberForOperationButton:sender];
         self.enterAreaLabel.text=[self.enterAreaLabel.text stringByAppendingString:@":"];
     }
 }
--(IBAction)clearAllAction:(UIButton*)sender
-{
-    self.temporaryNumber = 0;
-    self.didFinishEnteringNumerator = NO;
-    
-    [self.myCalculator.rationalNumbersArray removeAllObjects];
-    [self.myCalculator.mathematicOperationsArray removeAllObjects];
-    self.enterAreaLabel.text=@"";
-}
 
 - (IBAction) chandeSignAction:(UIButton*)sender
 {
-    if (self.myCalculator.mathematicOperationsArray.count != 0)
+    if (self.myCalculator.mathematicOperationsArray.count == 0)
     {
-        return;
+        if (self.myCalculator.rationalNumbersArray.count <= 1 )
+        {
+  
+        self.temporaryNumber = - (self.temporaryNumber);
+        if (self.temporaryNumber < 0)
+            self.enterAreaLabel.text=[NSString stringWithFormat:@"-%@",self.enterAreaLabel.text];
+        else
+            self.enterAreaLabel.text=[self.enterAreaLabel.text substringFromIndex:1];
+        }
     }
-    if (self.myCalculator.rationalNumbersArray.count > 1 )
-    {
-        return;
-    }
-    self.temporaryNumber = - (self.temporaryNumber);
-    if (self.temporaryNumber < 0)
-        self.enterAreaLabel.text=[NSString stringWithFormat:@"-%@",self.enterAreaLabel.text];
-    else
-        self.enterAreaLabel.text=[self.enterAreaLabel.text substringFromIndex:1];
 }
 
 @end
